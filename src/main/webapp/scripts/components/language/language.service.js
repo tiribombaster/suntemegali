@@ -8,7 +8,7 @@ angular.module('suntemegaliApp')
                 var language = $translate.storage().get('NG_TRANSLATE_LANG_KEY');
 
                 if (angular.isUndefined(language)) {
-                    language = 'en';
+                    language = 'ro';
                 }
 
                 deferred.resolve(language);
@@ -27,7 +27,7 @@ angular.module('suntemegaliApp')
  They are written in English to avoid character encoding issues (not a perfect solution)
  */
     .constant('LANGUAGES', [
-        'en', 'fr'
+         'fr','ro'
         //JHipster will add new languages here
     ]
 );
