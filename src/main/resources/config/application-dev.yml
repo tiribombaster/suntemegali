@@ -9,11 +9,11 @@ spring:
         active: dev
     datasource:
         dataSourceClassName: org.postgresql.ds.PGSimpleDataSource
-        url: 
-        databaseName: SuntemEgali
+        url:
+        databaseName: suntemEgali
         serverName: localhost
-        username: SuntemEgali
-        password: 
+        username: postgres
+        password: postgres
 
     jpa:
         database-platform: org.hibernate.dialect.PostgreSQL82Dialect
