@@ -13,7 +13,7 @@ Hide ng-cloak on page load, https://docs.angularjs.org/api/ng/directive/ngCloak
 
 /* ==========================================================================
 Developement Ribbon
-========================================================================== */
+/*========================================================================== *!/
 .development {
     position: absolute;
     width: 149px;
@@ -25,7 +25,7 @@ Developement Ribbon
     background-image: url("../images/development_ribbon.png");
     background-position: center center;
     background-repeat: no-repeat;
-}
+}*/
 
 /* ==========================================================================
 Version number in navbar
