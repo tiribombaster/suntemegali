@@ -1,0 +1,21 @@
+{
+  "generator-jhipster": {
+    "baseName": "SuntemEgali",
+    "packageName": "ro.suntem.egali",
+    "packageFolder": "ro/suntem/egali",
+    "authenticationType": "session",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "no",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "7",
+    "enableTranslation": true,
+    "rememberMeKey": "4d7fec2fa767045e34dc2dead1dc77505a68e10e"
+  }
+}
