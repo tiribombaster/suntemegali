@@ -3,98 +3,98 @@
         "title": "SuntemEgali",
         "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
         "menu": {
-            "home": "Home",
+            "home": "Acasa",
             "entities": {
-                "main": "Entities",
-                "additionalEntity": "JHipster will add additional entities here (do not translate!)"
+                "main": "Entitati",
+                "additionalEntity": "Aici punem entitati (do not translate!)"
             },
             "account": {
-                "main": "Account",
-                "settings": "Settings",
-                "password": "Password",
-                "sessions": "Sessions",
-                "login": "Authenticate",
+                "main": "Contul tau",
+                "settings": "Setari",
+                "password": "Parola",
+                "sessions": "Sesiuni",
+                "login": "Autentificare",
                 "logout": "Log out",
-                "register": "Register"
+                "register": "Inregistrare"
             },
             "admin": {
-                "main": "Administration",
+                "main": "Administrare",
                 "tracker": "User tracker",
                 "metrics": "Metrics",
-                "health": "Health",
-                "configuration": "Configuration",
+                "health": "Sanatate",
+                "configuration": "Configurare",
                 "logs": "Logs",
                 "audits": "Audits",
                 "apidocs": "API",
                 "database": "Database"
             },
-            "language": "Language"
+            "language": "Limba"
         },
         "form": {
             "username": "Login",
-            "username.placeholder": "Your login",
-            "newpassword": "New password",
-            "newpassword.placeholder": "New password",
-            "confirmpassword": "New password confirmation",
-            "confirmpassword.placeholder": "Confirm the new password",
+            "username.placeholder": "Te-ai conecatat",
+            "newpassword": "Parola noua",
+            "newpassword.placeholder": "Parola noua",
+            "confirmpassword": "Parola noua pentru confirmare",
+            "confirmpassword.placeholder": "Confirma noua parola",
             "email": "E-mail",
-            "email.placeholder": "Your e-mail"
+            "email.placeholder": "E-mailul tau"
         },
         "messages": {
             "info": {
-                "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
-                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
+                "authenticated": "Poti sa te autentifici chiar acum ",
+                "register": "Nu ai un cont ? <a href=\"#/register\">Inregistreaza-te</a>"
             },
             "error": {
-                "dontmatch" : "The password and its confirmation do not match!"
+                "dontmatch" : "Parola si confirmarea parolei nu sunt lafel!"
             },
             "validate": {
                 "newpassword": {
-                    "required": "Your password is required.",
-                    "minlength": "Your password is required to be at least 5 characters.",
-                    "maxlength": "Your password cannot be longer than 50 characters.",
-                    "strength": "Password strength:"
+                    "required": "Este nevoie de parola ta",
+                    "minlength": "Trebuie sa ai minim 5 caractere",
+                    "maxlength": "Parola ta nu poate fi mai mare de 50 de caractere",
+                    "strength": "Puterea parolei:"
                 },
                 "confirmpassword": {
-                    "required": "Your confirmation password is required.",
-                    "minlength": "Your confirmation password is required to be at least 5 characters.",
-                    "maxlength": "Your confirmation password cannot be longer than 50 characters."
+                    "required": "Confirmarea ta este necesara ",
+                    "minlength": "Trebuie sa ai minim 5 caractere",
+                    "maxlength": "Parola ta nu poate fi mai mare de 50 de caractere"
                 },
                 "email": {
-                    "required": "Your e-mail is required.",
-                    "invalid": "Your e-mail is invalid.",
-                    "minlength": "Your e-mail is required to be at least 5 characters.",
-                    "maxlength": "Your e-mail cannot be longer than 50 characters."
+                    "required": "E-mailul tau este necesar.",
+                    "invalid": "E-mail este invalid.",
+                    "minlength": "Trebuie sa ai minim 5 caractere",
+                    "maxlength": "Parola ta nu poate fi mai mare de 50 de caractere"
                 }
             }
         }
     },
     "entity": {
         "action": {
-            "back": "Back",
+            "back": "Inapoi",
             "cancel": "Cancel",
-            "delete": "Delete",
-            "edit": "Edit",
-            "save": "Save",
-            "view": "View"
+            "delete": "Sterge",
+            "edit": "Editare",
+            "save": "Salvare",
+            "view": "Vizualizare"
         },
         "detail": {
-            "field": "Field",
-            "value": "Value"
+            "field": "Camp",
+            "value": "Valoare"
         },
         "delete": {
-            "title": "Confirm delete operation"
+            "title": "Confirma opeatia e stergere"
         },
         "validation": {
-            "required": "This field is required.",
-            "minlength": "This field is required to be at least {{min}} characters.",
-            "maxlength": "This field cannot be longer than {{max}} characters.",
-            "min": "This field should be more than {{min}}.",
-            "max": "This field cannot be more than {{max}}.",
+            "required": "Acest camp este necesar.",
+            "minlength": "Trebuie sa ai {{min}} caractere.",
+            "maxlength": "Nu poti avea mai mult {{max}} caractere.",
+            "min": "Acest camp trebuie sa fie mai mare ca {{min}}.",
+            "max": "Acest camp nu poate fi mai mare decat {{max}}.",
             "pattern": "This field should follow pattern {{pattern}}.",
-            "number": "This field should be a number.",
-            "datetimelocal": "This field should be a date and time."
+            "number": "Acest camp trebuie sa fie un numar.",
+            "datetimelocal": "Acest camp trebuie sa fie de format tip Data calendaristica"
         }
     },
-    "footer": "This is your footer"
+    "footer": "Versiunea 1.0 Copyright SuntemEgali"
 }

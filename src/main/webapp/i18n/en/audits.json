@@ -14,13 +14,13 @@
         },
         "table": {
             "header": {
-                "principal": "User",
-                "date": "Date",
-                "status": "State",
-                "data": "Extra data"
+                "principal": "Utilizator",
+                "date": "Data",
+                "status": "Statut",
+                "data": "Data extra"
             },
             "data": {
-                "remoteAddress": "Remote Address:"
+                "remoteAddress": "Adresa remote"
             }
         }
     }

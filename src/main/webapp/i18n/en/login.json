@@ -1,19 +1,19 @@
 {
     "login": {
-        "title": "Authentication",
+        "title": "Autentificare",
         "form": {
-            "password": "Password",
-            "password.placeholder": "Your password",
-            "rememberme": "Automatic Login",
-            "button": "Authenticate"
+            "password": "Parola",
+            "password.placeholder": "Parola ta",
+            "rememberme": "Logare automata",
+            "button": "Autentificare"
         },
         "messages": {
             "error": {
-                "authentication": "<strong>Authentication failed!</strong> Please check your credentials and try again."
+                "authentication": "<strong>Autentificarea nu a reusit!</strong> Te rugam verifica din nou datele introduse."
             }
         },
         "password" : {
-            "forgot": "Did you forget your password?"
+            "forgot": "Ai uitat Parola?"
         }
     }
 }
