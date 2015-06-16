@@ -4,7 +4,7 @@ server:
 
 
 # security configuration (this key should be unique for your application, and kept secret)
-jhipster.security.rememberme.key: 4d7fec2fa767045e34dc2dead1dc77505a68e10e
+SuntemEgali.security.rememberme.key: 4d7fec2fa767045e34dc2dead1dc77505a68e10e
 
 async:
     corePoolSize: 2

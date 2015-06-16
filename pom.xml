@@ -191,7 +191,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <!-- The HikariCP Java Agent is disabled by default, as it is experimental
+        <!-- The HikariCP Java Agent
         <dependency>
             <groupId>com.zaxxer</groupId>
             <artifactId>HikariCP-agent</artifactId>
@@ -491,11 +491,11 @@
                 <configuration>
                     <rules>
                         <requireMavenVersion>
-                            <message>You are running an older version of Maven. JHipster requires at least Maven 3.0</message>
+                            <message>You are running an older version of Maven. SuntemEgali requires at least Maven 3.0</message>
                             <version>[3.0.0,)</version>
                         </requireMavenVersion>
                         <requireJavaVersion>
-                            <message>You are running an older version of Java. JHipster requires at least JDK ${java.version}</message>
+                            <message>You are running an older version of Java. SuntemEgali requires at least JDK ${java.version}</message>
                             <version>[${java.version}.0,)</version>
                         </requireJavaVersion>
                     </rules>
@@ -626,10 +626,10 @@
                 <logback.loglevel>DEBUG</logback.loglevel>
             </properties>
             <dependencies>
-                <dependency>
+               <!-- <dependency>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-starter-undertow</artifactId>
-                </dependency>
+                </dependency>-->
             </dependencies>
             <build>
                 <plugins>

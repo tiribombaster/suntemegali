@@ -1,9 +1,12 @@
 package ro.suntem.egali.security;
 
-import ro.suntem.egali.domain.PersistentToken;
-import ro.suntem.egali.domain.User;
-import ro.suntem.egali.repository.PersistentTokenRepository;
-import ro.suntem.egali.repository.UserRepository;
+import java.security.SecureRandom;
+import java.util.Arrays;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.joda.time.LocalDate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,12 +21,10 @@ import org.springframework.security.web.authentication.rememberme.InvalidCookieE
 import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.security.SecureRandom;
-import java.util.Arrays;
+import ro.suntem.egali.domain.PersistentToken;
+import ro.suntem.egali.domain.User;
+import ro.suntem.egali.repository.PersistentTokenRepository;
+import ro.suntem.egali.repository.UserRepository;
 
 /**
  * Custom implementation of Spring Security's RememberMeServices.
@@ -74,7 +75,7 @@ public class CustomPersistentRememberMeServices extends
 
     @Inject
     public CustomPersistentRememberMeServices(Environment env, org.springframework.security.core.userdetails.UserDetailsService userDetailsService) {
-        super(env.getProperty("jhipster.security.rememberme.key"), userDetailsService);
+        super(env.getProperty("SuntemEgali.security.rememberme.key"), userDetailsService);
         random = new SecureRandom();
     }
 

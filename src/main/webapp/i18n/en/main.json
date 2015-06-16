@@ -1,0 +1,19 @@
+{
+    "main": {
+        "title": "Welcome!",
+        "subtitle": "This is your homepage",
+        "logged": {
+            "message": "You are logged in as user \"{{username}}\"."
+        },
+        "question": "If you have any question on SuntemEgali:",
+        "link": {
+            "homepage": "SuntemEgali homepage",
+            "stackoverflow": "SuntemEgali on Stack Overflow",
+            "bugtracker": "SuntemEgali bug tracker",
+            "chat": "SuntemEgali public chat room",
+            "contact": "contact @SuntemEgali on Twitter"
+        },
+        "like": "If you like SuntemEgali, don't forget to give us a star on",
+        "github": "Github"
+    }
+}
