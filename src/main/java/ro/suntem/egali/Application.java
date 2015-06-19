@@ -1,6 +1,14 @@
 package ro.suntem.egali;
 
-import ro.suntem.egali.config.Constants;
+import java.io.IOException;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.Arrays;
+import java.util.Collection;
+
+import javax.annotation.PostConstruct;
+import javax.inject.Inject;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -10,15 +18,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.env.Environment;
 import org.springframework.core.env.SimpleCommandLinePropertySource;
-import com.google.common.base.Joiner;
-
-import javax.annotation.PostConstruct;
-import javax.inject.Inject;
-import java.io.IOException;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Arrays;
-import java.util.Collection;
+import ro.suntem.egali.config.Constants;
 
 @ComponentScan
 @EnableAutoConfiguration(exclude = {MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class})
@@ -69,7 +69,7 @@ public class Application {
         app.setShowBanner(false);
         SimpleCommandLinePropertySource source = new SimpleCommandLinePropertySource(args);
         addDefaultProfile(app, source);
-        addLiquibaseScanPackages();
+     /*   addLiquibaseScanPackages();*/
         Environment env = app.run(args).getEnvironment();
         log.info("Access URLs:\n----------------------------------------------------------\n\t" +
             "Local: \t\thttp://127.0.0.1:{}\n\t" +
@@ -94,7 +94,7 @@ public class Application {
     /**
      * Set the liquibases.scan.packages to avoid an exception from ServiceLocator.
      */
-    private static void addLiquibaseScanPackages() {
+    /*private static void addLiquibaseScanPackages() {
         System.setProperty("liquibase.scan.packages", Joiner.on(",").join(
             "liquibase.change", "liquibase.database", "liquibase.parser",
             "liquibase.precondition", "liquibase.datatype",
@@ -102,5 +102,5 @@ public class Application {
             "liquibase.snapshot", "liquibase.logging", "liquibase.diff",
             "liquibase.structure", "liquibase.structurecompare", "liquibase.lockservice",
             "liquibase.ext", "liquibase.changelog"));
-    }
+    }*/
 }
