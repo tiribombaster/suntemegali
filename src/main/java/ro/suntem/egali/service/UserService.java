@@ -46,7 +46,7 @@ public class UserService {
     public  User activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
         User user = userRepository.findOneByActivationKey(key);
-        // activate given user for the registration key.
+        // activeaza userul curent pentru inregistrarea de cheie.
         if (user != null) {
             user.setActivated(true);
             user.setActivationKey(null);
@@ -93,20 +93,20 @@ public class UserService {
         Set<Authority> authorities = new HashSet<>();
         String encryptedPassword = passwordEncoder.encode(password);
         newUser.setLogin(login);
-        // new user gets initially a generated password
+        // utilizatorul salveaza in baza de date o parola encriptata
         newUser.setPassword(encryptedPassword);
         newUser.setFirstName(firstName);
         newUser.setLastName(lastName);
         newUser.setEmail(email);
         newUser.setLangKey(langKey);
-        // new user is not active
+        // utilizatorul nou nu este activat
         newUser.setActivated(false);
-        // new user gets registration key
+        // utiliatorul primeste o cheie de activare random
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
         newUser.setAuthorities(authorities);
         userRepository.save(newUser);
-        log.debug("Created Information for User: {}", newUser);
+
         return newUser;
     }
 
