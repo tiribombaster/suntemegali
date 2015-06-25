@@ -1,5 +1,7 @@
 package ro.suntem.egali.config;
 
+import javax.sql.DataSource;
+
 import com.codahale.metrics.MetricRegistry;
 import com.fasterxml.jackson.datatype.hibernate4.Hibernate4Module;
 import com.zaxxer.hikari.HikariConfig;
@@ -8,21 +10,15 @@ import liquibase.integration.spring.SpringLiquibase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingClass;
 import org.springframework.boot.bind.RelaxedPropertyResolver;
-import org.springframework.context.ApplicationContextException;
 import org.springframework.context.EnvironmentAware;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.StringUtils;
-
-import javax.sql.DataSource;
-import java.util.Arrays;
 
 @Configuration
 @EnableJpaRepositories("ro.suntem.egali.repository")
@@ -48,18 +44,8 @@ public class DatabaseConfiguration implements EnvironmentAware {
         this.liquiBasePropertyResolver = new RelaxedPropertyResolver(env, "liquiBase.");
     }
 
-    @Bean(destroyMethod = "shutdown")
-    @ConditionalOnMissingClass(name = "ro.suntem.egali.config.HerokuDatabaseConfiguration")
-    @Profile("!" + Constants.SPRING_PROFILE_CLOUD)
+    @Bean
     public DataSource dataSource() {
-        log.debug("Configuring Datasource");
-        if (dataSourcePropertyResolver.getProperty("url") == null && dataSourcePropertyResolver.getProperty("databaseName") == null) {
-            log.error("Your database connection pool configuration is incorrect! The application" +
-                    " cannot start. Please check your Spring profile, current profiles are: {}",
-                    Arrays.toString(env.getActiveProfiles()));
-
-            throw new ApplicationContextException("Database connection pool is not configured correctly");
-        }
         HikariConfig config = new HikariConfig();
         config.setDataSourceClassName(dataSourcePropertyResolver.getProperty("dataSourceClassName"));
         if(StringUtils.isEmpty(dataSourcePropertyResolver.getProperty("url"))) {
@@ -71,9 +57,6 @@ public class DatabaseConfiguration implements EnvironmentAware {
         config.addDataSourceProperty("user", dataSourcePropertyResolver.getProperty("username"));
         config.addDataSourceProperty("password", dataSourcePropertyResolver.getProperty("password"));
 
-        if (metricRegistry != null) {
-            config.setMetricRegistry(metricRegistry);
-        }
         return new HikariDataSource(config);
     }
 

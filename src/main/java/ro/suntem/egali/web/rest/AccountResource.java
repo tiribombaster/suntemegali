@@ -1,6 +1,27 @@
 package ro.suntem.egali.web.rest;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+
 import com.codahale.metrics.annotation.Timed;
+import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import ro.suntem.egali.domain.Authority;
 import ro.suntem.egali.domain.PersistentToken;
 import ro.suntem.egali.domain.User;
@@ -10,20 +31,6 @@ import ro.suntem.egali.security.SecurityUtils;
 import ro.suntem.egali.service.MailService;
 import ro.suntem.egali.service.UserService;
 import ro.suntem.egali.web.rest.dto.UserDTO;
-import org.apache.commons.lang.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-import javax.inject.Inject;
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.*;
 
 /**
  * REST controller for managing the current user's account.
@@ -46,9 +53,7 @@ public class AccountResource {
     @Inject
     private MailService mailService;
 
-    /**
-     * POST  /register -> register the user.
-     */
+
     @RequestMapping(value = "/register",
             method = RequestMethod.POST,
             produces = MediaType.TEXT_PLAIN_VALUE)
@@ -56,17 +61,17 @@ public class AccountResource {
     public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
         User user = userRepository.findOneByLogin(userDTO.getLogin());
         if (user != null) {
-            return ResponseEntity.badRequest().contentType(MediaType.TEXT_PLAIN).body("login already in use");
+            return ResponseEntity.badRequest().contentType(MediaType.TEXT_PLAIN).body("");
         } else {
             if (userRepository.findOneByEmail(userDTO.getEmail()) != null) {
-                return ResponseEntity.badRequest().contentType(MediaType.TEXT_PLAIN).body("e-mail address already in use");
+                return ResponseEntity.badRequest().contentType(MediaType.TEXT_PLAIN).body("");
             }
             user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
             userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
             userDTO.getLangKey());
             String baseUrl = request.getScheme() + // "http"
             "://" +                            // "://"
-            request.getServerName() +          // "myhost"
+            request.getServerName() +          // "localhost" hostul meu
             ":" +                              // ":"
             request.getServerPort();           // "80"
 
@@ -75,9 +80,7 @@ public class AccountResource {
         }
     }
 
-    /**
-     * GET  /activate -> activate the registered user.
-     */
+
     @RequestMapping(value = "/activate",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -90,9 +93,7 @@ public class AccountResource {
         return new ResponseEntity<String>(HttpStatus.OK);
     }
 
-    /**
-     * GET  /authenticate -> check if the user is authenticated, and return its login.
-     */
+
     @RequestMapping(value = "/authenticate",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -102,9 +103,7 @@ public class AccountResource {
         return request.getRemoteUser();
     }
 
-    /**
-     * GET  /account -> get the current user.
-     */
+
     @RequestMapping(value = "/account",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -130,9 +129,7 @@ public class AccountResource {
             HttpStatus.OK);
     }
 
-    /**
-     * POST  /account -> update the current user information.
-     */
+
     @RequestMapping(value = "/account",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -147,9 +144,7 @@ public class AccountResource {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /**
-     * POST  /change_password -> changes the current user's password
-     */
+
     @RequestMapping(value = "/account/change_password",
             method = RequestMethod.POST,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -162,9 +157,7 @@ public class AccountResource {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    /**
-     * GET  /account/sessions -> get the current open sessions.
-     */
+
     @RequestMapping(value = "/account/sessions",
             method = RequestMethod.GET,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -211,7 +204,7 @@ public class AccountResource {
         produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
     public ResponseEntity<?> requestPasswordReset(@RequestBody String mail, HttpServletRequest request) {
-        
+
         User user = userService.requestPasswordReset(mail);
 
         if (user != null) {
@@ -225,7 +218,7 @@ public class AccountResource {
         } else {
           return new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST);
         }
-        
+
     }
 
     @RequestMapping(value = "/account/reset_password/finish",
