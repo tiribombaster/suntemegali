@@ -8,6 +8,7 @@
                 "main": "Entities",
                 "person": "Person",
                 "job": "Job",
+                "userJob": "UserJob",
                 "additionalEntity": "SuntemEgali will add additional entities here (do not translate!)"
             },
             "account": {

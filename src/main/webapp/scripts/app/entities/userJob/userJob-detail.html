@@ -1,0 +1,46 @@
+
+<div>
+    <h2><span translate="suntemegaliApp.userJob.detail.title">UserJob</span> {{userJob.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="suntemegaliApp.userJob.applyDate">ApplyDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userJob.applyDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="suntemegaliApp.userJob.user">user</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userJob.user.id}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="suntemegaliApp.userJob.job">job</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{userJob.job.id}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="userJob"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>
