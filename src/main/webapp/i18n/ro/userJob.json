@@ -1,0 +1,20 @@
+{
+    "suntemegaliApp": {
+        "userJob" : {
+            "home": {
+                "title": "UserJobs",
+                "createLabel": "Create a new UserJob",
+                "createOrEditLabel": "Create or edit a UserJob"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete UserJob {{ id }}?"
+            },
+            "detail": {
+                "title": "UserJob"
+            },
+            "applyDate": "ApplyDate",
+            "user": "user",
+            "job": "job"
+        }
+    }
+}
