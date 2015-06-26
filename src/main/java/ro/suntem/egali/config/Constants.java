@@ -5,6 +5,7 @@ package ro.suntem.egali.config;
  */
 public final class Constants {
 
+
     private Constants() {
     }
 
