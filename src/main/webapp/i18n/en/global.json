@@ -10,6 +10,7 @@
                 "job": "Job",
                 "userJob": "UserJob",
                 "jobCategory": "JobCategory",
+                "jobToJobCategory": "JobToJobCategory",
                 "additionalEntity": "SuntemEgali will add additional entities here (do not translate!)"
             },
             "account": {

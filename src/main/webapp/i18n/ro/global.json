@@ -9,6 +9,7 @@
                 "job": "Loc de munca",
                 "userJob": "Aplica la loc de munca",
                 "jobCategory": "Categorie loc de munca",
+                "jobToJobCategory": "JobToJobCategory",
                 "additionalEntity": "Aici punem entitati (do not translate!)"
             },
             "account": {

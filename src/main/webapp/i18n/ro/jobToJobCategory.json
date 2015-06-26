@@ -1,0 +1,19 @@
+{
+    "suntemegaliApp": {
+        "jobToJobCategory" : {
+            "home": {
+                "title": "JobToJobCategorys",
+                "createLabel": "Create a new JobToJobCategory",
+                "createOrEditLabel": "Create or edit a JobToJobCategory"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete JobToJobCategory {{ id }}?"
+            },
+            "detail": {
+                "title": "JobToJobCategory"
+            },
+            "job": "job",
+            "jobCategory": "jobCategory"
+        }
+    }
+}

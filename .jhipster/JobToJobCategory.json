@@ -1,0 +1,37 @@
+{
+    "relationships": [
+        {
+            "relationshipId": 1,
+            "relationshipName": "job",
+            "relationshipNameCapitalized": "Job",
+            "relationshipFieldName": "job",
+            "otherEntityName": "job",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "Job",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipId": 2,
+            "relationshipName": "jobCategory",
+            "relationshipNameCapitalized": "JobCategory",
+            "relationshipFieldName": "jobCategory",
+            "otherEntityName": "jobCategory",
+            "relationshipType": "many-to-one",
+            "otherEntityNameCapitalized": "JobCategory",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOwnerOneToOne": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": false,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": false,
+    "fieldsContainDate": false,
+    "changelogDate": "20150626171419",
+    "dto": "no",
+    "pagination": "no",
+    "validation": false
+}
