@@ -1,0 +1,119 @@
+<div>
+
+    <h2 translate="suntemegaliApp.jobToJobCategory.home.title">JobToJobCategorys</h2>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#saveJobToJobCategoryModal" ng-click="clear()">
+                    <span class="glyphicon glyphicon-flash"></span> <span translate="suntemegaliApp.jobToJobCategory.home.createLabel">Create a new JobToJobCategory</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="saveJobToJobCategoryModal" tabindex="-1" role="dialog" aria-labelledby="myJobToJobCategoryLabel"
+         aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="editForm" role="form" novalidate ng-submit="save()">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" id="myJobToJobCategoryLabel" translate="suntemegaliApp.jobToJobCategory.home.createOrEditLabel">Create or edit a JobToJobCategory</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input type="text" class="form-control" name="id"
+                                   ng-model="jobToJobCategory.id" readonly>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label translate="suntemegaliApp.jobToJobCategory.job">job</label>
+                            <select class="form-control" name="job" ng-model="jobToJobCategory.job.id" ng-options="job.id as job.id for job in jobs">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label translate="suntemegaliApp.jobToJobCategory.jobCategory">jobCategory</label>
+                            <select class="form-control" name="jobCategory" ng-model="jobToJobCategory.jobCategory.id" ng-options="jobCategory.id as jobCategory.id for jobCategory in jobcategorys">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="editForm.$invalid" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-save"></span>&nbsp;<span translate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="deleteJobToJobCategoryConfirmation">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form name="deleteForm" ng-submit="confirmDelete(jobToJobCategory.id)">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                                ng-click="clear()">&times;</button>
+                        <h4 class="modal-title" translate="entity.delete.title">Confirm delete operation</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p translate="suntemegaliApp.jobToJobCategory.delete.question" translate-values="{id: '{{jobToJobCategory.id}}'}">Are you sure you want to delete this JobToJobCategory?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="clear()">
+                            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span translate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" ng-disabled="deleteForm.$invalid" class="btn btn-danger">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th translate="suntemegaliApp.jobToJobCategory.job">job</th>
+                    <th translate="suntemegaliApp.jobToJobCategory.jobCategory">jobCategory</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="jobToJobCategory in jobToJobCategorys">
+                    <td><a ui-sref="jobToJobCategoryDetail({id:jobToJobCategory.id})">{{jobToJobCategory.id}}</a></td>
+                    <td>{{jobToJobCategory.job.id}}</td>
+                    <td>{{jobToJobCategory.jobCategory.id}}</td>
+                    <td>
+                        <button type="submit"
+                                ui-sref="jobToJobCategoryDetail({id:jobToJobCategory.id})"
+                                class="btn btn-info btn-sm">
+                            <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span translate="entity.action.view"> View</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="showUpdate(jobToJobCategory.id)"
+                                class="btn btn-primary btn-sm">
+                            <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span translate="entity.action.edit"> Edit</span>
+                        </button>
+                        <button type="submit"
+                                ng-click="delete(jobToJobCategory.id)"
+                                class="btn btn-danger btn-sm">
+                            <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span translate="entity.action.delete"> Delete</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

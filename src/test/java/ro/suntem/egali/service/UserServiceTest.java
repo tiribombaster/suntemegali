@@ -1,25 +1,26 @@
 package ro.suntem.egali.service;
 
-import ro.suntem.egali.Application;
-import ro.suntem.egali.domain.PersistentToken;
-import ro.suntem.egali.domain.User;
-import ro.suntem.egali.repository.PersistentTokenRepository;
-import ro.suntem.egali.repository.UserRepository;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
 import org.joda.time.DateTime;
-import ro.suntem.egali.service.util.RandomUtil;
 import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.IntegrationTest;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import javax.inject.Inject;
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.*;
+import org.springframework.transaction.annotation.Transactional;
+import ro.suntem.egali.Application;
+import ro.suntem.egali.domain.PersistentToken;
+import ro.suntem.egali.domain.User;
+import ro.suntem.egali.repository.PersistentTokenRepository;
+import ro.suntem.egali.repository.UserRepository;
+import ro.suntem.egali.service.util.RandomUtil;
 
 /**
  * Test class for the UserResource REST controller.
@@ -56,8 +57,8 @@ public class UserServiceTest {
 
     @Test
     public void assertThatUserMustExistToResetPassword() {
-        
-        User user = userService.requestPasswordReset("john.doe@localhost");
+
+        User user = userService.requestPasswordReset("Marius@localhost");
         assertThat(user).isNull();
 
         user = userService.requestPasswordReset("admin@localhost");
@@ -65,7 +66,7 @@ public class UserServiceTest {
         assertThat(user.getEmail()).isEqualTo("admin@localhost");
         assertThat(user.getResetDate()).isNotNull();
         assertThat(user.getResetKey()).isNotNull();
-        
+
     }
 
     @Test
@@ -78,7 +79,7 @@ public class UserServiceTest {
 
     @Test
     public void assertThatResetKeyMustNotBeOlderThan24Hours() {
-        
+
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
 
         DateTime daysAgo = DateTime.now().minusHours(25);
@@ -94,12 +95,12 @@ public class UserServiceTest {
         assertThat(maybeUser).isNull();
 
         userRepository.delete(user);
-        
+
     }
 
     @Test
     public void assertThatResetKeyMustBeValid() {
-        
+
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
 
         DateTime daysAgo = DateTime.now().minusHours(25);
@@ -114,12 +115,12 @@ public class UserServiceTest {
         assertThat(maybeUser).isNull();
 
         userRepository.delete(user);
-        
+
     }
 
     @Test
     public void assertThatUserCanResetPassword() {
-        
+
         User user = userService.createUserInformation("johndoe", "johndoe", "John", "Doe", "john.doe@localhost", "en-US");
 
         String oldPassword = user.getPassword();
@@ -140,7 +141,7 @@ public class UserServiceTest {
         assertThat(maybeUser.getPassword()).isNotEqualTo(oldPassword);
 
         userRepository.delete(user);
-        
+
     }
 
     @Test

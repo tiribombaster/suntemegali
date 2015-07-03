@@ -6,6 +6,10 @@
             "home": "Acasa",
             "entities": {
                 "main": "Entitati",
+                "job": "Loc de munca",
+                "userJob": "Aplica la loc de munca",
+                "jobCategory": "Categorie loc de munca",
+                "jobToJobCategory": "JobToJobCategory",
                 "additionalEntity": "Aici punem entitati (do not translate!)"
             },
             "account": {
@@ -16,6 +20,7 @@
                 "login": "Autentificare",
                 "logout": "Log out",
                 "register": "Inregistrare"
+
             },
             "admin": {
                 "main": "Administrare",
@@ -43,7 +48,8 @@
         "messages": {
             "info": {
                 "authenticated": "Poti sa te autentifici chiar acum ",
-                "register": "Nu ai un cont ? <a href=\"#/register\">Inregistreaza-te</a>"
+                "register": "Nu ai un cont ?",
+                "info" :"toti suntem Egali !"
             },
             "error": {
                 "dontmatch" : "Parola si confirmarea parolei nu sunt lafel!"

@@ -1,0 +1,21 @@
+{
+    "suntemegaliApp": {
+        "job" : {
+            "home": {
+                "title": "Locuri de munca",
+                "createLabel": "Creaza loc de munca",
+                "createOrEditLabel": "Modifica loc de munca"
+            },
+            "delete": {
+                "question": "Esti sigur ca vrei sa stergi locul de munca  {{ id }}?"
+            },
+            "detail": {
+                "title": "Loc de munca"
+            },
+            "name": "Nume",
+            "city": "Localitate",
+            "description": "Descriere",
+            "requirements": "Requirements"
+        }
+    }
+}

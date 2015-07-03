@@ -1,29 +1,39 @@
 <!--
 PAGINA PRINCIPALA
 -->
-
 <div ng-cloak>
-    <div class="row">
+    <div class="row " style="height: 250px" >
 
+        <div class="col-md-4" style="width: 20%">
+            <span class="tiri img-responsive img-rounded"></span>
+
+        </div>
 
         <div class="col-md-4">
-            <span class="tiri img-responsive img-rounded"></span>
-        </div>
-        <div class="col-md-8">
             <h1 translate="main.title">Bine ai venit !</h1>
-
 
             <div ng-switch="isAuthenticated()">
                 <div class="alert alert-success" ng-switch-when="true" translate="main.logged.message" translate-values="{username: '{{account.login}}'}">
                     Acum esti logat ca  "{{account.login}}".
                 </div>
 
-
                 <div class="alert alert-warning" ng-switch-when="false" translate="global.messages.info.register">
-                    Nu ai un cont ? <a href="#/register">Creaza un cont !</a>
+                    Nu ai un cont ?
                 </div>
-            </div>
 
-        </div>
-    </div>
+                   <a ng-switch-when="false" translate="global.menu.account.register" class="btn btn-info" role="button" href="#/register">Creaza un cont !</a>
+                   <a href="#/login"  ng-switch-when="false" class="btn btn-info" role="button"  translate="global.menu.account.login" >Link Button</a>
+
+                 </div>
+
+              </div>
+         </div>
+
+
+           <h4 translate="global.messages.info.info" >Toti suntem egali</h4>
+
+   </div>
+
+
 </div>
+

@@ -7,6 +7,10 @@
             "entities": {
                 "main": "Entities",
                 "person": "Person",
+                "job": "Job",
+                "userJob": "UserJob",
+                "jobCategory": "JobCategory",
+                "jobToJobCategory": "JobToJobCategory",
                 "additionalEntity": "SuntemEgali will add additional entities here (do not translate!)"
             },
             "account": {
@@ -44,7 +48,8 @@
         "messages": {
             "info": {
                 "authenticated": "If you want to <a href=\"#/login\">authenticate</a>, you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\").",
-                "register": "You don't have an account yet? <a href=\"#/register\">Register a new account</a>"
+                "register": "You don't have an account yet? ",
+                "info" :"everyone is Equal"
             },
             "error": {
                 "dontmatch" : "The password and its confirmation do not match!"
