@@ -36,10 +36,12 @@ PAGINA PRINCIPALA
         <div class="col-md-12">
 
             <div ng-switch="isAuthenticated()">
+
+
                 <div ng-switch-when="false">
 
                     <h2 translate="suntemegaliApp.job.home.title">Jobs</h2>
-
+                    <label>Search: <input ng-model="searchText"></label>
 
                     <div class="modal fade" id="saveJobModal" tabindex="-1" role="dialog" aria-labelledby="myJobLabel"
                          aria-hidden="true">
@@ -174,7 +176,7 @@ PAGINA PRINCIPALA
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="job in jobs">
+                            <tr ng-repeat="job in jobs | filter:searchText" >
                                 <td><a ui-sref="jobDetail({id:job.id})">{{job.id}}</a></td>
                                 <td>{{job.name}}</td>
                                 <td>{{job.city}}</td>
@@ -207,6 +209,10 @@ PAGINA PRINCIPALA
 
                 <div ng-switch-when="true">
 
+                    <h2 translate="suntemegaliApp.job.home.title">Jobs</h2>
+
+                    <label>Search: <input ng-model="searchText"></label>
+
                     <div class="modal fade" id="saveJobModal" tabindex="-1" role="dialog" aria-labelledby="myJobLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">
@@ -335,18 +341,16 @@ PAGINA PRINCIPALA
                                 <th>ID</th>
                                 <th translate="suntemegaliApp.job.name">Name</th>
                                 <th translate="suntemegaliApp.job.city">City</th>
-                                <th translate="suntemegaliApp.job.description">Description</th>
-                                <th translate="suntemegaliApp.job.requirements">Requirements</th>
+
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="job in jobs">
+                            <tr ng-repeat="job in jobs | filter :searchText">
                                 <td><a ui-sref="jobDetail({id:job.id})">{{job.id}}</a></td>
                                 <td>{{job.name}}</td>
                                 <td>{{job.city}}</td>
-                                <td>{{job.description}}</td>
-                                <td>{{job.requirements}}</td>
+
                                 <td>
                                     <button type="submit"
                                             ui-sref="jobDetail({id:job.id})"
@@ -354,6 +358,7 @@ PAGINA PRINCIPALA
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
                                         translate="entity.action.view"> View</span>
                                     </button>
+
                                 </td>
                             </tr>
                             </tbody>
@@ -371,6 +376,8 @@ PAGINA PRINCIPALA
                         </nav>
                     </div>
                 </div>
+
+
             </div>
 
         </div>
