@@ -55,8 +55,8 @@ public class AccountResource {
 
 
     @RequestMapping(value = "/register",
-            method = RequestMethod.POST,
-            produces = MediaType.TEXT_PLAIN_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.TEXT_PLAIN_VALUE)
     @Timed
     public ResponseEntity<?> registerAccount(@Valid @RequestBody UserDTO userDTO, HttpServletRequest request) {
         User user = userRepository.findOneByLogin(userDTO.getLogin());
@@ -67,13 +67,13 @@ public class AccountResource {
                 return ResponseEntity.badRequest().contentType(MediaType.TEXT_PLAIN).body("");
             }
             user = userService.createUserInformation(userDTO.getLogin(), userDTO.getPassword(),
-            userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
-            userDTO.getLangKey());
+                userDTO.getFirstName(), userDTO.getLastName(), userDTO.getEmail().toLowerCase(),
+                userDTO.getLangKey(),userDTO.isAuditiv(),userDTO.isBoliRare(),userDTO.isFizice(),userDTO.isPsihic(),userDTO.isSomatic(),userDTO.isVizual());
             String baseUrl = request.getScheme() + // "http"
-            "://" +                            // "://"
-            request.getServerName() +          // "localhost" hostul meu
-            ":" +                              // ":"
-            request.getServerPort();           // "80"
+                "://" +                            // "://"
+                request.getServerName() +          // "localhost" hostul meu
+                ":" +                              // ":"
+                request.getServerPort();           // "80"
 
             mailService.sendActivationEmail(user, baseUrl);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -82,8 +82,8 @@ public class AccountResource {
 
 
     @RequestMapping(value = "/activate",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<String> activateAccount(@RequestParam(value = "key") String key) {
         User user = userService.activateRegistration(key);
@@ -95,8 +95,8 @@ public class AccountResource {
 
 
     @RequestMapping(value = "/authenticate",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public String isAuthenticated(HttpServletRequest request) {
         log.debug("REST request to check if the current user is authenticated");
@@ -105,8 +105,8 @@ public class AccountResource {
 
 
     @RequestMapping(value = "/account",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<UserDTO> getAccount() {
         User user = userService.getUserWithAuthorities();
@@ -124,15 +124,15 @@ public class AccountResource {
                 user.getFirstName(),
                 user.getLastName(),
                 user.getEmail(),
-                user.getLangKey(),
+                user.getLangKey(), user.isBoliRare(), user.isSomatic(), user.isAuditiv(), user.isVizual(), user.isPsihic(), user.isMental(),
                 roles),
             HttpStatus.OK);
     }
 
 
     @RequestMapping(value = "/account",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<String> saveAccount(@RequestBody UserDTO userDTO) {
         User userHavingThisLogin = userRepository.findOneByLogin(userDTO.getLogin());
@@ -146,8 +146,8 @@ public class AccountResource {
 
 
     @RequestMapping(value = "/account/change_password",
-            method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.POST,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<?> changePassword(@RequestBody String password) {
         if (!checkPasswordLength(password)) {
@@ -159,8 +159,8 @@ public class AccountResource {
 
 
     @RequestMapping(value = "/account/sessions",
-            method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+        method = RequestMethod.GET,
+        produces = MediaType.APPLICATION_JSON_VALUE)
     @Timed
     public ResponseEntity<List<PersistentToken>> getCurrentSessions() {
         User user = userRepository.findOneByLogin(SecurityUtils.getCurrentLogin());
@@ -174,19 +174,19 @@ public class AccountResource {
 
     /**
      * DELETE  /account/sessions?series={series} -> invalidate an existing session.
-     *
+     * <p/>
      * - You can only delete your own sessions, not any other user's session
      * - If you delete one of your existing sessions, and that you are currently logged in on that session, you will
-     *   still be able to use that session, until you quit your browser: it does not work in real time (there is
-     *   no API for that), it only removes the "remember me" cookie
+     * still be able to use that session, until you quit your browser: it does not work in real time (there is
+     * no API for that), it only removes the "remember me" cookie
      * - This is also true if you invalidate your current session: you will still be able to use it until you close
-     *   your browser or that the session times out. But automatic login (the "remember me" cookie) will not work
-     *   anymore.
-     *   There is an API to invalidate the current session, but there is no API to check which session uses which
-     *   cookie.
+     * your browser or that the session times out. But automatic login (the "remember me" cookie) will not work
+     * anymore.
+     * There is an API to invalidate the current session, but there is no API to check which session uses which
+     * cookie.
      */
     @RequestMapping(value = "/account/sessions/{series}",
-            method = RequestMethod.DELETE)
+        method = RequestMethod.DELETE)
     @Timed
     public void invalidateSession(@PathVariable String series) throws UnsupportedEncodingException {
         String decodedSeries = URLDecoder.decode(series, "UTF-8");
@@ -208,15 +208,15 @@ public class AccountResource {
         User user = userService.requestPasswordReset(mail);
 
         if (user != null) {
-          String baseUrl = request.getScheme() +
-              "://" +
-              request.getServerName() +
-              ":" +
-              request.getServerPort();
-          mailService.sendPasswordResetMail(user, baseUrl);
-          return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
+            String baseUrl = request.getScheme() +
+                "://" +
+                request.getServerName() +
+                ":" +
+                request.getServerPort();
+            mailService.sendPasswordResetMail(user, baseUrl);
+            return new ResponseEntity<>("e-mail was sent", HttpStatus.OK);
         } else {
-          return new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("e-mail address not registered", HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -231,13 +231,13 @@ public class AccountResource {
         }
         User user = userService.completePasswordReset(newPassword, key);
         if (user != null) {
-          return new ResponseEntity<String>(HttpStatus.OK);
+            return new ResponseEntity<String>(HttpStatus.OK);
         } else {
-          return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     private boolean checkPasswordLength(String password) {
-      return (!StringUtils.isEmpty(password) && password.length() >= UserDTO.PASSWORD_MIN_LENGTH && password.length() <= UserDTO.PASSWORD_MAX_LENGTH);
+        return (!StringUtils.isEmpty(password) && password.length() >= UserDTO.PASSWORD_MIN_LENGTH && password.length() <= UserDTO.PASSWORD_MAX_LENGTH);
     }
 }

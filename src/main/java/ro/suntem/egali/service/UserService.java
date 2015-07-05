@@ -1,5 +1,6 @@
 package ro.suntem.egali.service;
 
+import com.fasterxml.jackson.databind.node.BooleanNode;
 import ro.suntem.egali.domain.Authority;
 import ro.suntem.egali.domain.PersistentToken;
 import ro.suntem.egali.domain.User;
@@ -42,6 +43,29 @@ public class UserService {
 
     @Inject
     private AuthorityRepository authorityRepository;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public  User activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
@@ -86,7 +110,7 @@ public class UserService {
     }
 
     public User createUserInformation(String login, String password, String firstName, String lastName, String email,
-                                      String langKey) {
+                                      String langKey,Boolean auditiv,Boolean boliRare, Boolean fizice,Boolean psihic, Boolean somatic,Boolean vizual) {
 
         User newUser = new User();
         Authority authority = authorityRepository.findOne("ROLE_USER");
@@ -101,6 +125,13 @@ public class UserService {
         newUser.setLangKey(langKey);
         // utilizatorul nou nu este activat
         newUser.setActivated(false);
+        newUser.setAuditiv(auditiv);
+        newUser.setBoliRare(boliRare);
+        newUser.setFizice(fizice);
+        newUser.setPsihic(psihic);
+        newUser.setSomatic(somatic);
+        newUser.setVizual(vizual);
+
         // utiliatorul primeste o cheie de activare random
         newUser.setActivationKey(RandomUtil.generateActivationKey());
         authorities.add(authority);
