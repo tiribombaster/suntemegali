@@ -32,10 +32,6 @@ PAGINA PRINCIPALA
         </div>
     </div>
 
-
-    <h4 translate="global.messages.info.info">Toti suntem egali</h4>
-
-
     <div class="row">
         <div class="col-md-12">
 
@@ -43,18 +39,7 @@ PAGINA PRINCIPALA
                 <div ng-switch-when="false">
 
                     <h2 translate="suntemegaliApp.job.home.title">Jobs</h2>
-                    <!--
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <button class="btn btn-primary" data-toggle="modal" data-target="#saveJobModal"
-                                                        ng-click="clear()">
-                                                    <span class="glyphicon glyphicon-flash"></span> <span
-                                                    translate="suntemegaliApp.job.home.createLabel">Create a new Job</span>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>-->
+
 
                     <div class="modal fade" id="saveJobModal" tabindex="-1" role="dialog" aria-labelledby="myJobLabel"
                          aria-hidden="true">
@@ -201,18 +186,7 @@ PAGINA PRINCIPALA
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
                                         translate="entity.action.view"> View</span>
                                     </button>
-                                    <button type="submit"
-                                            ng-click="showUpdate(job.id)"
-                                            class="btn btn-primary btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
-                                        translate="entity.action.edit"> Edit</span>
-                                    </button>
-                                    <button type="submit"
-                                            ng-click="delete(job.id)"
-                                            class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
-                                        translate="entity.action.delete"> Delete</span>
-                                    </button>
+
                                 </td>
                             </tr>
                             </tbody>
@@ -232,20 +206,6 @@ PAGINA PRINCIPALA
                 </div>
 
                 <div ng-switch-when="true">
-
-                    <h2 translate="suntemegaliApp.job.home.title">Jobs</h2>
-
-                    <!-- <div class="container">
-                         <div class="row">
-                             <div class="col-md-4">
-                                 <button class="btn btn-primary" data-toggle="modal" data-target="#saveJobModal"
-                                         ng-click="clear()">
-                                     <span class="glyphicon glyphicon-flash"></span> <span
-                                     translate="suntemegaliApp.job.home.createLabel">Create a new Job</span>
-                                 </button>
-                             </div>
-                         </div>
-                     </div>-->
 
                     <div class="modal fade" id="saveJobModal" tabindex="-1" role="dialog" aria-labelledby="myJobLabel"
                          aria-hidden="true">
@@ -393,18 +353,6 @@ PAGINA PRINCIPALA
                                             class="btn btn-info btn-sm">
                                         <span class="glyphicon glyphicon-eye-open"></span>&nbsp;<span
                                         translate="entity.action.view"> View</span>
-                                    </button>
-                                    <button type="submit"
-                                            ng-click="showUpdate(job.id)"
-                                            class="btn btn-primary btn-sm">
-                                        <span class="glyphicon glyphicon-pencil"></span>&nbsp;<span
-                                        translate="entity.action.edit"> Edit</span>
-                                    </button>
-                                    <button type="submit"
-                                            ng-click="delete(job.id)"
-                                            class="btn btn-danger btn-sm">
-                                        <span class="glyphicon glyphicon-remove-circle"></span>&nbsp;<span
-                                        translate="entity.action.delete"> Delete</span>
                                     </button>
                                 </td>
                             </tr>

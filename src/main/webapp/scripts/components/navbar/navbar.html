@@ -17,7 +17,53 @@
                         <span translate="global.menu.home">Home</span>
                     </a>
                 </li>
-                <li ui-sref-active="active" ng-switch-when="true" class="dropdown pointer">
+
+
+
+
+              <!--  <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#saveJobModal"
+                                    ng-click="clear()">
+                                <span class="glyphicon glyphicon-flash"></span> <span
+                                translate="suntemegaliApp.job.home.createLabel">Create a new Job</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>-->
+
+          <!--      <li ui-sref-active="active" ng-switch-when="true"   >
+
+                                <span>
+                                    <button class="btn btn-default navbar-btn" data-toggle="modal" data-target="#saveJobModal"
+                                            ng-click="clear()">
+                                        <span class="glyphicon glyphicon-ok"></span> <span
+                                        translate="suntemegaliApp.job.home.createLabel">Create a new Job</span>
+                                    </button>
+                                </span>
+
+
+                </li>
+-->
+
+
+                <li ui-sref-active="active" ng-switch-when="false"   >
+
+                                <span><li>
+                                   <a data-toggle="modal" data-target="#saveJobModal"
+                                            ng-click="clear()">
+                                        <span class="glyphicon glyphicon-ok"></span> <span
+                                        translate="suntemegaliApp.job.home.createLabel">Create a new Job</span>
+                                    </a>
+                                </li>
+                                </span>
+
+
+                </li>
+
+
+                <li ui-sref-active="active" ng-switch-when="true" has-role="ROLE_ADMIN"  class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                                 <span>
                                     <span class="glyphicon glyphicon-th-list"></span>
@@ -39,6 +85,8 @@
                             &#xA0;<span translate="global.menu.entities.jobToJobCategory">jobToJobCategory</span></a></li>
                     </ul>
                 </li>
+
+
                 <li ng-class="{active: $state.includes('account')}" class="dropdown pointer">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="">
                                 <span>
