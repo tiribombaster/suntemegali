@@ -30,6 +30,13 @@
             <column name="PASSWORD" type="varchar(60)"/>
             <column name="first_name" type="varchar(50)"/>
             <column name="last_name" type="varchar(50)"/>
+            <column name="fizice" type="boolean"/>
+            <column name="somatic" type="boolean"/>
+            <column name="auditiv" type="boolean"/>
+            <column name="vizual" type="boolean"/>
+            <column name="mental" type="boolean"/>
+            <column name="psihic" type="boolean"/>
+            <column name="boli_rare" type="boolean"/>
             <column name="email" type="varchar(100)">
                 <constraints unique="true"/>
             </column>
@@ -51,7 +58,7 @@
             <column name="last_modified_by" type="varchar(50)"/>
             <column name="last_modified_date" type="timestamp"/>
         </createTable>
-        
+
         <createIndex indexName="idx_user_login"
             tableName="JHI_USER"
             unique="true">
@@ -63,7 +70,7 @@
             unique="true">
             <column name="email" type="varchar(100)"/>
         </createIndex>
-        
+
         <createTable tableName="JHI_AUTHORITY">
             <column name="name" type="varchar(50)">
                 <constraints primaryKey="true" nullable="false"/>
@@ -116,6 +123,14 @@
                   file="config/liquibase/users.csv"
                   separator=";"
                   tableName="JHI_USER">
+
+            <column name="fizice" type="boolean"/>
+            <column name="somatic" type="boolean"/>
+            <column name="auditiv" type="boolean"/>
+            <column name="vizual" type="boolean"/>
+            <column name="mental" type="boolean"/>
+            <column name="psihic" type="boolean"/>
+            <column name="boli_rare" type="boolean"/>
             <column name="activated" type="boolean"/>
             <column name="created_date" type="timestamp"/>
         </loadData>
@@ -130,7 +145,7 @@
                   file="config/liquibase/users_authorities.csv"
                   separator=";"
                   tableName="JHI_USER_AUTHORITY"/>
-                  
+
         <createTable tableName="JHI_PERSISTENT_AUDIT_EVENT">
             <column name="event_id" type="bigint" autoIncrement="${autoIncrement}" >
                 <constraints primaryKey="true" nullable="false"/>
@@ -172,5 +187,5 @@
                                  referencedColumnNames="event_id"
                                  referencedTableName="JHI_PERSISTENT_AUDIT_EVENT"/>
     </changeSet>
-    
+
 </databaseChangeLog>

@@ -6,7 +6,9 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
+
 import org.hibernate.annotations.Type;
+
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -36,7 +38,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 
     @JsonIgnore
     @NotNull
-    @Size(min = 60, max = 60) 
+    @Size(min = 60, max = 60)
     @Column(length = 60)
     private String password;
 
@@ -47,6 +49,33 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Size(max = 50)
     @Column(name = "last_name", length = 50)
     private String lastName;
+
+
+    @Column(name = "fizice")
+    private Boolean fizice;
+
+
+    @Column(name = "somatic")
+    private Boolean somatic;
+
+
+    @Column(name = "auditiv")
+    private Boolean auditiv;
+
+
+    @Column(name = "vizual")
+    private Boolean vizual;
+
+
+    @Column(name = "mental")
+    private Boolean mental;
+
+    @Column(name = "psihic")
+    private Boolean psihic;
+
+
+    @Column(name = "boli_rare")
+    private Boolean boliRare;
 
     @Email
     @Size(max = 100)
@@ -76,9 +105,9 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "JHI_USER_AUTHORITY",
-            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
-            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
+        name = "JHI_USER_AUTHORITY",
+        joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
+        inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Authority> authorities = new HashSet<>();
 
@@ -86,6 +115,66 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, mappedBy = "user")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<PersistentToken> persistentTokens = new HashSet<>();
+
+    public Boolean isFizice() {
+        return fizice;
+    }
+
+    public void setFizice(Boolean fizice) {
+        this.fizice = fizice;
+    }
+
+    public Boolean isSomatic() {
+        return somatic;
+    }
+
+    public void setSomatic(Boolean somatic) {
+        this.somatic = somatic;
+    }
+
+    public Boolean isAuditiv() {
+        return auditiv;
+    }
+
+    public void setAuditiv(Boolean auditiv) {
+        this.auditiv = auditiv;
+    }
+
+    public Boolean isVizual() {
+        return vizual;
+    }
+
+    public void setVizual(Boolean vizual) {
+        this.vizual = vizual;
+    }
+
+    public Boolean isMental() {
+        return mental;
+    }
+
+    public void setMental(Boolean mental) {
+        this.mental = mental;
+    }
+
+    public Boolean isPsihic() {
+        return psihic;
+    }
+
+    public void setPsihic(Boolean psihic) {
+        this.psihic = psihic;
+    }
+
+    public Boolean isBoliRare() {
+        return boliRare;
+    }
+
+    public void setBoliRare(Boolean boliRare) {
+        this.boliRare = boliRare;
+    }
+
+    public boolean isActivated() {
+        return activated;
+    }
 
     public Long getId() {
         return id;
@@ -160,11 +249,11 @@ public class User extends AbstractAuditingEntity implements Serializable {
     }
 
     public DateTime getResetDate() {
-       return resetDate;
+        return resetDate;
     }
 
     public void setResetDate(DateTime resetDate) {
-       this.resetDate = resetDate;
+        this.resetDate = resetDate;
     }
 
     public String getLangKey() {
@@ -217,14 +306,14 @@ public class User extends AbstractAuditingEntity implements Serializable {
     @Override
     public String toString() {
         return "User{" +
-                "login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
-                ", activated='" + activated + '\'' +
-                ", langKey='" + langKey + '\'' +
-                ", activationKey='" + activationKey + '\'' +
-                "}";
+            "login='" + login + '\'' +
+            ", password='" + password + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            ", email='" + email + '\'' +
+            ", activated='" + activated + '\'' +
+            ", langKey='" + langKey + '\'' +
+            ", activationKey='" + activationKey + '\'' +
+            "}";
     }
 }
